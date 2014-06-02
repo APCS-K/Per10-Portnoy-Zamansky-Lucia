@@ -1,12 +1,18 @@
 class Room{
  Room[]doors;
+ ArrayList<Object>inventory;
+ ArrayList<Role>company;
  String name;
  
  public Room(String name){
+   inventory=new ArrayList<Object>();
+   company=new ArrayList<Role>();
    this.name=name;
   doors=new Room[4]; 
  }
  public Room(String name,Room[]doors){
+   inventory=new ArrayList<Object>();
+   company=new ArrayList<Role>();
    this.name=name;
   this.doors=new Room[4];
   setDoors(doors); 
@@ -51,5 +57,34 @@ class Room{
  public void setName(String name){
   this.name=name; 
  }
+ 
+ public String inventory(){
+   String inv="";
+   for (Object o:inventory){
+     inv+=o.toString()+"\n";
+   }
+   return inv;
+ }
+ public String company(){
+  String com=""; 
+  for(Role r:company){
+    com+=r.toString()+"\n";
+  }
+  return com;
+ }
+ 
+ public void add(Object o){
+   inventory.add(o);
+ }
+ public Object remove(int index){
+    return inventory.remove(index);
+  }
+ 
+ public void enter(Role r){
+   company.add(r);
+ }
+ public void exit(Role r){
+    company.remove(r);
+  }
  
 }
